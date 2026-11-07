@@ -53,6 +53,7 @@ public class Character {
     private int facing; // 1 = right, -1 = left
     private boolean isBlocking;
     private boolean isHit;
+    private boolean isAI; // Whether this character is controlled by AI
     private String state; // idle, walk, attack, special, block, hit, finish
     private long stateTimer;
     private Bitmap sprite;
@@ -71,6 +72,10 @@ public class Character {
     private float specialManaCost;
     
     public Character(int type, float x, float y) {
+        this(type, x, y, false);
+    }
+    
+    public Character(int type, float x, float y, boolean isAI) {
         this.type = type;
         this.name = NAMES[type];
         this.x = x;
@@ -84,6 +89,7 @@ public class Character {
         this.maxMana = MANA[type];
         this.mana = maxMana;
         this.speed = SPEED[type];
+        this.isAI = isAI;
         
         // Set attack properties based on type
         switch (type) {
@@ -364,6 +370,40 @@ public class Character {
         }
     }
     
+    // AI Methods
+    public boolean isAI() { return isAI; }
+    
+    public void updateAI(long deltaTime, Character target, float screenWidth, float groundLevel) {
+        if (!isAI || !isAlive()) return;
+        
+        float distanceToTarget = Math.abs(x - target.getX());
+        
+        // AI Decision Making
+        if (distanceToTarget < attackRange && System.currentTimeMillis() - lastAttackTime > attackCooldown) {
+            // Attack if in range
+            attack();
+        } else if (distanceToTarget < specialRange && mana >= specialManaCost && 
+                   System.currentTimeMillis() - lastSpecialTime > specialCooldown) {
+            // Use special attack if in range and has mana
+            specialAttack();
+        } else if (distanceToTarget > attackRange * 1.5f) {
+            // Move towards target if too far
+            float direction = (target.getX() < x) ? -1 : 1;
+            move(direction * 0.5f, 0);
+            facing = (direction > 0) ? 1 : -1;
+        } else {
+            // Move away if too close (defensive)
+            float direction = (target.getX() < x) ? 1 : -1;
+            move(direction * 0.3f, 0);
+            facing = (direction > 0) ? 1 : -1;
+        }
+        
+        // Random blocking
+        if (Math.random() < 0.02) {
+            block(true);
+        }
+    }
+    
     // Getters and Setters
     public int getType() { return type; }
     public String getName() { return name; }
@@ -377,6 +417,7 @@ public class Character {
     public float getMaxMana() { return maxMana; }
     public int getFacing() { return facing; }
     public boolean isBlocking() { return isBlocking; }
+    public boolean isAI() { return isAI; }
     public String getState() { return state; }
     public float getAttackDamage() { return attackDamage; }
     public float getAttackRange() { return attackRange; }

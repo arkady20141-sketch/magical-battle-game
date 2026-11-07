@@ -99,7 +99,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
         
         // Initialize characters
         player1 = new Character(Character.TYPE_GOJO, 200, groundLevel);
-        player2 = new Character(Character.TYPE_YUJI, screenWidth - 200, groundLevel);
+        player2 = new Character(Character.TYPE_YUJI, screenWidth - 200, groundLevel, true);
         
         isRunning = true;
         gameThread = new Thread(this);
@@ -166,6 +166,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
         }
         if (player2 != null) {
             player2.update(deltaTime);
+            if (player2.isAI()) {
+                player2.updateAI(deltaTime, player1, screenWidth, groundLevel);
+            }
         }
         
         // Update round timer
@@ -204,7 +207,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
     
     private void resetRound() {
         player1 = new Character(selectedP1, 200, groundLevel);
-        player2 = new Character(selectedP2, screenWidth - 200, groundLevel);
+        player2 = new Character(selectedP2, screenWidth - 200, groundLevel, true);
         roundTimer = 99000;
     }
     
@@ -527,7 +530,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
                 if (touchX > startLeft && touchX < startRight && 
                     touchY > startTop && touchY < startBottom) {
                     player1 = new Character(selectedP1, 200, groundLevel);
-                    player2 = new Character(selectedP2, screenWidth - 200, groundLevel);
+                    player2 = new Character(selectedP2, screenWidth - 200, groundLevel, true);
                     gameState = STATE_FIGHTING;
                     roundTimer = 99000;
                 }
@@ -548,8 +551,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
                     player1.block(true);
                 }
             }
-            // Right side of screen - P2 controls
-            else {
+            // Right side of screen - P2 controls (only if not AI)
+            else if (!player2.isAI()) {
                 if (touchY < screenHeight / 3) {
                     player2.attack();
                 } else if (touchY < screenHeight / 2) {
@@ -560,7 +563,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
             }
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             player1.block(false);
-            player2.block(false);
+            if (!player2.isAI()) {
+                player2.block(false);
+            }
         }
         
         // Movement - handled in ACTION_MOVE
@@ -569,8 +574,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Run
                 // P1 movement
                 float dx = (touchX - (screenWidth / 4)) / (screenWidth / 4);
                 player1.move(dx, 0);
-            } else {
-                // P2 movement
+            } else if (!player2.isAI()) {
+                // P2 movement (only if not AI)
                 float dx = (touchX - (screenWidth * 3 / 4)) / (screenWidth / 4);
                 player2.move(dx, 0);
             }
