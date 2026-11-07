@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+    <title>Магічна Битва - Файтинг</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+        <div class="logo">
+            <h1>МАГІЧНА БИТВА</h1>
+            <p class="subtitle">Файтинг з персонажами Jujutsu Kaisen</p>
+        </div>
+        
+        <div class="character-select">
+            <h2>Оберіть персонажа:</h2>
+            <div class="char-grid" id="p1-select">
+                <button class="char-btn" data-char="gojo" data-player="1">
+                    <div class="char-icon gojo"></div>
+                    <span>Годжо</span>
+                </button>
+                <button class="char-btn" data-char="yuji" data-player="1">
+                    <div class="char-icon yuji"></div>
+                    <span>Юуджі</span>
+                </button>
+                <button class="char-btn" data-char="megumi" data-player="1">
+                    <div class="char-icon megumi"></div>
+                    <span>Мегумі</span>
+                </button>
+                <button class="char-btn" data-char="nobara" data-player="1">
+                    <div class="char-icon nobara"></div>
+                    <span>Нобара</span>
+                </button>
+                <button class="char-btn" data-char="sukuna" data-player="1">
+                    <div class="char-icon sukuna"></div>
+                    <span>Сукuna</span>
+                </button>
+                <button class="char-btn" data-char="toji" data-player="1">
+                    <div class="char-icon toji"></div>
+                    <span>Тоджі</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="vs-indicator">VS</div>
+        
+        <div class="character-select p2">
+            <h2>Оберіть суперника:</h2>
+            <div class="char-grid" id="p2-select">
+                <button class="char-btn" data-char="gojo" data-player="2">
+                    <div class="char-icon gojo"></div>
+                    <span>Годжо</span>
+                </button>
+                <button class="char-btn" data-char="yuji" data-player="2">
+                    <div class="char-icon yuji"></div>
+                    <span>Юуджі</span>
+                </button>
+                <button class="char-btn" data-char="megumi" data-player="2">
+                    <div class="char-icon megumi"></div>
+                    <span>Мегумі</span>
+                </button>
+                <button class="char-btn" data-char="nobara" data-player="2">
+                    <div class="char-icon nobara"></div>
+                    <span>Нобара</span>
+                </button>
+                <button class="char-btn" data-char="sukuna" data-player="2">
+                    <div class="char-icon sukuna"></div>
+                    <span>Сукuna</span>
+                </button>
+                <button class="char-btn" data-char="toji" data-player="2">
+                    <div class="char-icon toji"></div>
+                    <span>Тоджі</span>
+                </button>
+            </div>
+        </div>
+        
+        <button id="start-fight" class="big-btn" disabled>ПОЧАТИ БІЙ</button>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <canvas id="game-canvas"></canvas>
+        
+        <!-- UI Overlay -->
+        <div class="game-ui">
+            <!-- P1 Health & Mana -->
+            <div class="player-stats p1">
+                <div class="health-bar">
+                    <div class="health-fill" id="p1-health"></div>
+                </div>
+                <div class="mana-bar">
+                    <div class="mana-fill" id="p1-mana"></div>
+                </div>
+                <div class="char-name" id="p1-name"></div>
+                <div class="char-portrait" id="p1-portrait"></div>
+            </div>
+            
+            <!-- Timer -->
+            <div class="timer" id="timer">99</div>
+            
+            <!-- P2 Health & Mana -->
+            <div class="player-stats p2">
+                <div class="char-portrait" id="p2-portrait"></div>
+                <div class="char-name" id="p2-name"></div>
+                <div class="health-bar">
+                    <div class="health-fill" id="p2-health"></div>
+                </div>
+                <div class="mana-bar">
+                    <div class="mana-fill" id="p2-mana"></div>
+                </div>
+            </div>
+            
+            <!-- Round Info -->
+            <div class="round-info" id="round-info">Round 1</div>
+        </div>
+        
+        <!-- Touch Controls -->
+        <div class="touch-controls" id="touch-controls">
+            <div class="control-section movement">
+                <button class="touch-btn" id="btn-up">↑</button>
+                <div class="h-stack">
+                    <button class="touch-btn" id="btn-left">←</button>
+                    <button class="touch-btn" id="btn-right">→</button>
+                </div>
+                <button class="touch-btn" id="btn-down">↓</button>
+            </div>
+            <div class="control-section actions">
+                <button class="touch-btn action-btn" id="btn-light">Легкий удар</button>
+                <button class="touch-btn action-btn" id="btn-heavy">Сильний удар</button>
+                <button class="touch-btn action-btn" id="btn-special">Спец. атака</button>
+                <button class="touch-btn action-btn" id="btn-block">Блок</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Finish Screen -->
+    <div id="finish-screen" class="screen hidden">
+        <div class="finish-content">
+            <h1 id="finish-title">ДОБИВАННЯ!</h1>
+            <div class="finish-animation" id="finish-animation"></div>
+            <h2 id="winner-name"></h2>
+            <p class="finish-desc" id="finish-desc"></p>
+            <button id="continue-btn" class="big-btn">ПРОДОВЖИТИ</button>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameover-screen" class="screen hidden">
+        <div class="gameover-content">
+            <h1 id="gameover-title">КІНЕЦЬ БОЮ</h1>
+            <h2 id="gameover-winner"></h2>
+            <div class="stats">
+                <p>Рахунок: <span id="final-score"></span></p>
+            </div>
+            <button id="restart-btn" class="big-btn">ГОЛОВНЕ МЕНЮ</button>
+        </div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="bg-music" loop>
+        <source src="sounds/bg-music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="punch-sfx" src="sounds/punch.mp3"></audio>
+    <audio id="special-sfx" src="sounds/special.mp3"></audio>
+    <audio id="finish-sfx" src="sounds/finish.mp3"></audio>
+    <audio id="select-sfx" src="sounds/select.mp3"></audio>
+
+    <script src="js/characters.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/render.js"></script>
+</body>
+</html>

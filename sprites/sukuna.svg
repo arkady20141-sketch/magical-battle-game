@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Sukuna - White hair, red eyes, dark red outfit -->
+  
+  <!-- Hair -->
+  <rect x="8" y="4" width="16" height="4" fill="#ffffff"/>
+  
+  <!-- Head -->
+  <rect x="10" y="8" width="12" height="8" fill="#ffffff"/>
+  
+  <!-- Eyes -->
+  <rect x="14" y="8" width="1" height="1" fill="#cc0000"/>
+  <rect x="15" y="8" width="1" height="1" fill="#cc0000"/>
+  <rect x="17" y="8" width="1" height="1" fill="#cc0000"/>
+  <rect x="18" y="8" width="1" height="1" fill="#cc0000"/>
+  
+  <!-- Tattoos -->
+  <rect x="10" y="10" width="2" height="1" fill="#660000"/>
+  <rect x="20" y="10" width="2" height="1" fill="#660000"/>
+  
+  <!-- Body -->
+  <rect x="10" y="16" width="12" height="10" fill="#ffffff"/>
+  
+  <!-- Outfit -->
+  <rect x="8" y="20" width="16" height="12" fill="#880000"/>
+  
+  <!-- Arms -->
+  <rect x="4" y="22" width="4" height="8" fill="#880000"/>
+  <rect x="24" y="22" width="4" height="8" fill="#880000"/>
+  
+  <!-- Legs -->
+  <rect x="10" y="32" width="4" height="8" fill="#660000"/>
+  <rect x="18" y="32" width="4" height="8" fill="#660000"/>
+</svg>

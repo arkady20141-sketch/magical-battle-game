@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Yuji Itadori - Dark hair, red eyes, black outfit -->
+  
+  <!-- Hair -->
+  <rect x="8" y="4" width="16" height="4" fill="#333333"/>
+  
+  <!-- Head -->
+  <rect x="10" y="8" width="12" height="8" fill="#ffcc99"/>
+  
+  <!-- Eyes -->
+  <rect x="14" y="8" width="1" height="1" fill="#ff0000"/>
+  <rect x="15" y="8" width="1" height="1" fill="#ff0000"/>
+  <rect x="17" y="8" width="1" height="1" fill="#ff0000"/>
+  <rect x="18" y="8" width="1" height="1" fill="#ff0000"/>
+  
+  <!-- Scars -->
+  <rect x="16" y="6" width="1" height="1" fill="#cc0000"/>
+  <rect x="17" y="6" width="1" height="1" fill="#cc0000"/>
+  
+  <!-- Body -->
+  <rect x="10" y="16" width="12" height="10" fill="#ffcc99"/>
+  
+  <!-- Outfit -->
+  <rect x="8" y="20" width="16" height="12" fill="#222222"/>
+  
+  <!-- Arms -->
+  <rect x="4" y="22" width="4" height="8" fill="#222222"/>
+  <rect x="24" y="22" width="4" height="8" fill="#222222"/>
+  
+  <!-- Legs -->
+  <rect x="10" y="32" width="4" height="8" fill="#333333"/>
+  <rect x="18" y="32" width="4" height="8" fill="#333333"/>
+</svg>
