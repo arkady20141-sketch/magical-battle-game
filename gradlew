@@ -32,16 +32,17 @@
 #       Busybox and similar reduced shells will NOT work, because this script
 #       requires all of these POSIX shell features:
 #         * functions;
-#         * expansions "$var", "${var}", "${var:-default}", "${var+SET}",
-#           "${var#prefix}", "${var%suffix}", and "$( cmd )";
-#         * compound commands having a testable exit status, especially "case";
-#         * various built-in commands including "command", "set", and "ulimit".
+#         * expansions «$var», «${var}», «${var:-default}», «${var+SET}»,
+#           «${var#prefix}», «${var%suffix}», and «$( cmd )»;
+#         * compound commands having a testable exit status, especially «case»;
+#         * various built-in commands including «command», «set», and «ulimit».
 #
 #   Important for patching:
 #
 #   (2) This script targets any POSIX shell, so it avoids extensions provided
-#       by Bash, Ksh, etc; in particular arrays are avoided. The
-#       "traditional" practice of packing multiple parameters into a
+#       by Bash, Ksh, etc; in particular arrays are avoided.
+#
+#       The "traditional" practice of packing multiple parameters into a
 #       space-separated string is a well documented source of bugs and security
 #       problems, so this is (mostly) avoided, by progressively accumulating
 #       options in "$@", and eventually passing that to Java.
@@ -172,8 +173,7 @@ if "$cygwin" || "$msys" ; then
 
     JAVACMD=$( cygpath --unix "$JAVACMD" )
 
-    # Now convert the arguments - kludge to limit ourselves
- to /bin/sh
+    # Now convert the arguments - kludge to limit ourselves to /bin/sh
     for arg do
         if
             case $arg in                                #(
@@ -203,10 +203,10 @@ fi
 #     double quotes to make sure that they get re-expanded; and
 #   * put everything else in single quotes, so that it's not re-expanded.
 
-set -- \\
-        "-Dorg.gradle.appname=$APP_BASE_NAME" \\
-        -classpath "$CLASSPATH" \\
-        org.gradle.wrapper.GradleWrapperMain \\
+set -- \
+        "-Dorg.gradle.appname=$APP_BASE_NAME" \
+        -classpath "$CLASSPATH" \
+        org.gradle.wrapper.GradleWrapperMain \
         "$@"
 
 # Stop when "xargs" is not available.
@@ -235,10 +235,10 @@ fi
 #
 
 eval "set -- $(
-        printf '%s\\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
+        printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
         xargs -n1 |
-        sed ' s~[^-[:alnum:]+,./:=@_]~\\\\&~g; ' |
-        tr '\\n' ' '
-    )" '\"$@\"'
+        sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
+        tr '\n' ' '
+    )" '"$@"'
 
 exec "$JAVACMD" "$@"
