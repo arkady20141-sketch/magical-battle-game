@@ -371,8 +371,6 @@ public class Character {
     }
     
     // AI Methods
-    public boolean isAI() { return isAI; }
-    
     public void updateAI(long deltaTime, Character target, float screenWidth, float groundLevel) {
         if (!isAI || !isAlive()) return;
         
