@@ -18,6 +18,7 @@ jobs:
         uses: android-actions/setup-android@v4
       - name: Install Android 34 platform
         run: |
+          yes | sdkmanager --licenses
           sdkmanager "platforms;android-34"
           sdkmanager "build-tools;34.0.0"
       - name: Set ANDROID_HOME
