@@ -20,6 +20,8 @@ jobs:
         run: |
           sdkmanager "platforms;android-34"
           sdkmanager "build-tools;34.0.0"
+      - name: Set ANDROID_HOME
+        run: echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
       - run: chmod +x gradlew
       - run: ./gradlew assembleDebug
       - uses: softprops/action-gh-release@v2
