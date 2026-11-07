@@ -15,7 +15,7 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
       - run: chmod +x gradlew
       - run: ./gradlew assembleDebug
       - uses: softprops/action-gh-release@v2
