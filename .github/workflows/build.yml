@@ -26,6 +26,7 @@ jobs:
           echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
           echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
       - run: chmod +x gradlew
+      - run: ./gradlew help
       - run: ./gradlew assembleDebug
       - uses: softprops/action-gh-release@v2
         if: success()
