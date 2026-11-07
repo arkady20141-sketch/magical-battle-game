@@ -16,13 +16,7 @@ jobs:
           java-version: 17
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
-      - name: Install Android 33 platform
-        run: |
-          yes | sdkmanager --licenses
-          sdkmanager "platforms;android-33"
-          sdkmanager "build-tools;33.0.0"
       - run: chmod +x gradlew
-      - run: ./gradlew compileDebugJava
       - run: ./gradlew assembleDebug
       - uses: softprops/action-gh-release@v2
         if: success()
