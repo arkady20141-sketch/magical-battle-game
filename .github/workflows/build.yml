@@ -14,12 +14,12 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - name: Install Gradle 8.0
+      - name: Install Gradle 8.1
         run: |
-          wget https://services.gradle.org/distributions/gradle-8.0-bin.zip -O /tmp/gradle.zip
+          wget https://services.gradle.org/distributions/gradle-8.1-bin.zip -O /tmp/gradle.zip
           unzip -d /home/runner/gradle /tmp/gradle.zip
-          echo "GRADLE_HOME=/home/runner/gradle/gradle-8.0" >> $GITHUB_ENV
-          echo "PATH=/home/runner/gradle/gradle-8.0/bin:$PATH" >> $GITHUB_ENV
+          echo "GRADLE_HOME=/home/runner/gradle/gradle-8.1" >> $GITHUB_ENV
+          echo "PATH=/home/runner/gradle/gradle-8.1/bin:$PATH" >> $GITHUB_ENV
       - run: gradle --version
       - run: gradle assembleDebug
       - uses: softprops/action-gh-release@v2
