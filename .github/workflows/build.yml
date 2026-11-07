@@ -14,20 +14,10 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - uses: gradle/gradle-build-action@v3
         with:
-          sdk-platforms: android-34
-          sdk-build-tools: 34.0.0
-          sdk-components: platform-tools,emulator
-      - name: Install Gradle 8.1
-        run: |
-          wget https://services.gradle.org/distributions/gradle-8.1-bin.zip -O /tmp/gradle.zip
-          unzip -d /home/runner/gradle /tmp/gradle.zip
-          echo "GRADLE_HOME=/home/runner/gradle/gradle-8.1" >> $GITHUB_ENV
-          echo "PATH=/home/runner/gradle/gradle-8.1/bin:$PATH" >> $GITHUB_ENV
-      - run: gradle --version
-      - run: gradle assembleDebug
+          gradle-version: 8.1
+      - run: ./gradlew assembleDebug
       - uses: softprops/action-gh-release@v2
         if: success()
         with:
