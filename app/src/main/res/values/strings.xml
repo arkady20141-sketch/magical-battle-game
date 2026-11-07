@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Магічна Битва</string>
+    <string name="app_subtitle">Файтинг з Jujutsu Kaisen</string>
+    
+    <!-- Game UI Strings -->
+    <string name="select_character">Оберіть персонажа</string>
+    <string name="vs">VS</string>
+    <string name="start_fight">ПОЧАТИ БІЙ</string>
+    <string name="finish_title">ДОБИВАННЯ!</string>
+    <string name="game_over">КІНЕЦЬ БОЮ</string>
+    <string name="restart">СПРОБУВАТИ ЗНОВУ</string>
+    <string name="main_menu">ГОЛОВНЕ МЕНЮ</string>
+    <string name="round">Round %d</string>
+    
+    <!-- Character Names -->
+    <string name="char_gojo">Годжо</string>
+    <string name="char_yuji">Юуджі</string>
+    <string name="char_megumi">Мегумі</string>
+    <string name="char_nobara">Нобара</string>
+    <string name="char_sukuna">Сукuna</string>
+    <string name="char_toji">Тоджі</string>
+</resources>

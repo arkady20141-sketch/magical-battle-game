@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC6</color>
+    <color name="colorBackground">#121212</color>
+    <color name="colorSurface">#1E1E1E</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextSecondary">#B3B3B3</color>
+    
+    <!-- Character colors -->
+    <color name="gojo_color">#0000FF</color>
+    <color name="yuji_color">#FF0000</color>
+    <color name="megumi_color">#00FF00</color>
+    <color name="nobara_color">#FF6699</color>
+    <color name="sukuna_color">#880000</color>
+    <color name="toji_color">#888888</color>
+</resources>

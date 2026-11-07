@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Red circle background -->
+    <path
+        android:fillColor="#FF0000"
+        android:pathData="M54,0C82.48,0 108,25.52 108,54C108,82.48 82.48,108 54,108C25.52,108 0,82.48 0,54C0,25.52 25.52,0 54,0Z" />
+    
+    <!-- White sword -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,20L70,80L40,80L56,20H54Z" />
+    
+    <!-- Yellow magic effect -->
+    <path
+        android:fillColor="#FFFF00"
+        android:pathData="M30,30L54,10L78,30L54,50Z" />
+</vector>
